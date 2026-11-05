@@ -1,0 +1,56 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="p-5 mb-5 bg-white rounded-3 shadow-sm border text-center">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold text-success mb-3">Bienvenidos a Refugio Huellitas</h1>
+            <p class="col-md-8 fs-4 mx-auto text-secondary">
+                Dándole una segunda oportunidad a perritos y gatitos rescatados en la Región de Valparaíso. Encuentra a tu compañero ideal o apóyanos en nuestra misión.
+            </p>
+            <div class="mt-4">
+                <a href="{% url 'catalogo' %}" class="btn btn-success btn-lg px-4 me-md-2 shadow-sm">Ver Catálogo de Mascotas</a>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-success btn-lg px-4">Acceso Administrativo</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 text-center p-3">
+                <div class="card-body">
+                    <div class="fs-1 mb-3">🏡</div>
+                    <h3 class="card-title h5 fw-bold text-dark">Nuestra Misión</h3>
+                    <p class="card-text text-muted">
+                        Rescatar, rehabilitar y buscar hogares responsables y llenos de amor para animales en situación de calle o abandono.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 text-center p-3">
+                <div class="card-body">
+                    <div class="fs-1 mb-3">🤝</div>
+                    <h3 class="card-title h5 fw-bold text-dark">Adopción Responsable</h3>
+                    <p class="card-text text-muted">
+                        Cada mascota se entrega con sus controles al día, asegurando un proceso de emparejamiento ideal para cada familia adoptante.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 text-center p-3">
+                <div class="card-body">
+                    <div class="fs-1 mb-3">📍</div>
+                    <h3 class="card-title h5 fw-bold text-dark">Región de Valparaíso</h3>
+                    <p class="card-text text-muted">
+                        Operamos de forma local en la zona, conectando activamente a la comunidad con refugios y redes de apoyo animal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

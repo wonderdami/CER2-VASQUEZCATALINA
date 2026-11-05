@@ -1,0 +1,54 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-8">
+            <h1 class="fw-bold text-success">Gestión Interna de Mascotas</h1>
+            <p class="text-muted">Panel exclusivo para administradores y personal autorizado del refugio.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <a href="/admin/app/mascota/add/" class="btn btn-success shadow-sm">
+                + Agregar Nueva Mascota
+            </a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-success">
+                        <tr>
+                            <th class="py-3 ps-4">Nombre</th>
+                            <th class="py-3">Especie</th>
+                            <th class="py-3">Sexo</th>
+                            <th class="py-3">Edad Aproximada</th>
+                            <th class="py-3 text-end pe-4">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mascota in mascotas %}
+                            <tr>
+                                <td class="ps-4 fw-semibold">{{ mascota.nombre }}</td>
+                                <td>{{ mascota.especie.nombre }}</td>
+                                <td>{{ mascota.sexo }}</td>
+                                <td>{{ mascota.edad }}</td>
+                                <td class="text-end pe-4">
+                                    <a href="/admin/app/mascota/{{ mascota.id }}/change/" class="btn btn-sm btn-outline-primary">Editar en Admin</a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center py-4 text-muted">
+                                    No hay mascotas registradas en el sistema actualmente.
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
